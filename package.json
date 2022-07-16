@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node -r dotenv/config dist",
+    "start": "tsc && node -r dotenv/config dist",
     "dev": "ts-node-dev --respawn --ignore-watch node_modules -r dotenv/config src/index.ts dotenv_config_path=.env --files",
     "test": "echo \"Error: no test specified\" && exit 1",
     "sequelize": "tsc && npx sequelize"
@@ -24,7 +24,8 @@
     "sequelize": "^6.21.0",
     "ts-node-dev": "^2.0.0",
     "winston": "^3.8.0",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "typescript": "^4.7.4"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.3.0",
@@ -33,7 +34,6 @@
     "@types/express": "^4.17.13",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/multer": "^1.4.7",
-    "sequelize-cli": "^6.4.1",
-    "typescript": "^4.7.4"
+    "sequelize-cli": "^6.4.1"
   }
 }
