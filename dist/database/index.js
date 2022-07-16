@@ -11,5 +11,11 @@ const mySqlConection = new Conection_1.default(env_1.default.DB_NAME, env_1.defa
     dialect: env_1.default.DB_DIALECT ? postgres : "mysql",
     port: env_1.default.DB_PORT,
     host: env_1.default.DB_HOST,
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false,
+        },
+    },
 });
 exports.mySqlConection = mySqlConection;
