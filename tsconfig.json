@@ -100,10 +100,10 @@
 
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
-    "ts-node": {
-      "files": true
-    },
-    "files": ["src/index.ts", "src/@types/custom.d.ts"]
-  }
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+  },
+  "ts-node": {
+    "files": true
+  },
+  "files": ["src/index.ts", "src/@types/custom.d.ts"]
 }
