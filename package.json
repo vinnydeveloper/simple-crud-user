@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "start": "node -r dotenv/config dist",
     "dev": "ts-node-dev --respawn --ignore-watch node_modules -r dotenv/config src/index.ts dotenv_config_path=.env --files",
     "test": "echo \"Error: no test specified\" && exit 1",
     "sequelize": "tsc && npx sequelize",
-    "postinstall": "tsc && npx sequelize db:migrate"
+    "postinstall": "tsc"
   },
   "keywords": [],
   "author": "",
