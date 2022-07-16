@@ -6,8 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.mySqlConection = void 0;
 const Conection_1 = __importDefault(require("./Conection"));
 const env_1 = __importDefault(require("../infra/config/env"));
+const postgres = env_1.default.DB_DIALECT === "postgres" ? "postgres" : "postgres";
 const mySqlConection = new Conection_1.default(env_1.default.DB_NAME, env_1.default.DB_USER, env_1.default.DB_PASS, {
-    dialect: "mysql",
+    dialect: env_1.default.DB_DIALECT ? postgres : "mysql",
     port: env_1.default.DB_PORT,
     host: env_1.default.DB_HOST,
 });

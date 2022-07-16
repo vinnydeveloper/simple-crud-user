@@ -9,7 +9,13 @@ const db = {
     password: env_1.default.DB_PASS,
     database: env_1.default.DB_NAME,
     host: env_1.default.DB_HOST,
-    dialect: "mysql",
+    dialect: "postgres",
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false,
+        },
+    },
 };
 console.log(db);
 module.exports = db;

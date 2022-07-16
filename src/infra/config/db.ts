@@ -5,7 +5,13 @@ const db = {
   password: ENV.DB_PASS,
   database: ENV.DB_NAME,
   host: ENV.DB_HOST,
-  dialect: "mysql",
+  dialect: "postgres",
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
 };
 
 console.log(db);

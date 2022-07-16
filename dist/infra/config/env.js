@@ -7,5 +7,6 @@ const ENV = {
     DB_PORT: Number(process.env.DB_PORT),
     DB_USER: process.env.DB_USER,
     DB_PASS: process.env.DB_PASS,
+    DB_DIALECT: process.env.DB_PASS,
 };
 exports.default = ENV;
