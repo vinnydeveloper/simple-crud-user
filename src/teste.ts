@@ -12,4 +12,6 @@ const map = listaUsuarios.map((user: any) => {
 
   return obj;
 });
+
+//TESTE
 user.instance.bulkCreate(map).then((result: any) => console.log(result));
