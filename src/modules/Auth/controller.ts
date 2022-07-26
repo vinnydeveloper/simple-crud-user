@@ -9,7 +9,7 @@ const controller = {
   async login(req: Request, res: Response) {
     const { email, senha } = req.body;
 
-    const targetUser = await user.instance.findOne({
+    const targetUser = await user.instance.count({
       where: {
         email,
       },

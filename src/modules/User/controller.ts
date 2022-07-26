@@ -6,6 +6,14 @@ import path from "path";
 
 const controller = {
   async cadastro(req: Request, res: Response) {
+    const { email } = req.body;
+
+    const existsEmail = await user.instance.count({ where: { email } });
+
+    if (existsEmail) {
+      return res.status(400).json("Email já cadastrado");
+    }
+
     const hashPass = bcrypt.hashSync(req.body.senha, 10);
 
     const newUser = await user.instance.create({
@@ -19,7 +27,9 @@ const controller = {
   async exibir(req: Request, res: Response) {
     const { id } = req.params;
 
-    const userSaved = await user.instance.findByPk(id);
+    const userSaved = await user.instance.findByPk(id, {
+      attributes: ["nome", "email"],
+    });
     return res.json(userSaved);
   },
 
@@ -32,17 +42,19 @@ const controller = {
 
     const listaUsuarios = parseFile(path.resolve("uploads", file?.filename));
 
-    const map = listaUsuarios.map((user: any) => {
-      const obj = {
+    const listaCadastro = listaUsuarios.map((user: any) => {
+      const newUser = {
         name: user.nome,
         email: user.email,
         senha: bcrypt.hashSync(user.senha.toString(), 10),
       };
 
-      return obj;
+      // return user.instance.create(newUser); //1000 requisições
+
+      return newUser;
     });
 
-    await user.instance.bulkCreate(map);
+    await user.instance.bulkCreate(listaCadastro); // 1 requisição
 
     return res.sendStatus(204);
   },

@@ -26,7 +26,7 @@ export default class Conection {
         this.db_config
       );
     } catch (err) {
-      console.error("Error ao tentar uma conexão com banco dados");
+      console.error("Error ao tentar uma conexão com banco dados", err);
       throw err;
     }
   }
@@ -39,7 +39,7 @@ export default class Conection {
       await this.instance.authenticate();
       console.log("Banco dados conectado!");
     } catch (error) {
-      console.error("Erro ao tentar se conectar ao banco de dados1");
+      console.error("Erro ao tentar se conectar ao banco de dados", error);
     }
   }
 }

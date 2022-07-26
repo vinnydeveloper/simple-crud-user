@@ -5,15 +5,18 @@ const db = {
   password: ENV.DB_PASS,
   database: ENV.DB_NAME,
   host: ENV.DB_HOST,
-  dialect: "postgres",
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
-  },
+  dialect: ENV.DB_DIALECT,
 };
 
-console.log(db);
+if (process.env.NODE_ENV === "production") {
+  Object.assign(db, {
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
+  });
+}
 
 module.exports = db;
